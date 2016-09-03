@@ -1,9 +1,10 @@
 import gym
-env = gym.make('AirRaid-ram-v0')
-env.reset()
-agent = Agent(env.action_space)
+from agent import Agent
+env = gym.make('CartPole-v0')
+obs = env.reset()
+agent = Agent(env)
 
 for _ in range(3000):
     env.render()
     a = agent.act(obs)
-    (ob, reward, done, _info) = env.step(a)
+    (obs, reward, done, _info) = env.step(a)
